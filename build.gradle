@@ -1,0 +1,44 @@
+allprojects {
+    //
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    group 'me.qspeng'
+    version '1.0-SNAPSHOT'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    [compileJava, compileTestJava, javadoc]*.options*.encoding = 'UTF-8'
+
+    buildscript {
+        ext {
+            springBootVersion = '2.0.3.RELEASE'
+        }
+        repositories {
+            mavenCentral()
+        }
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    ext {
+        springBootVersion = '2.0.3.RELEASE'
+    }
+
+    dependencies {
+        //common dependencies
+        compile("org.springframework.boot:spring-boot-starter:${springBootVersion}")
+        testCompile ('junit:junit:4.12')
+        compileOnly('org.projectlombok:lombok:1.18.0')
+    }
+
+    configurations {
+
+    }
+}
