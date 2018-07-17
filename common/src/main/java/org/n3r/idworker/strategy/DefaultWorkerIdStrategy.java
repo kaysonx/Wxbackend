@@ -1,4 +1,4 @@
-package idworker.strategy;
+package org.n3r.idworker.strategy;
 
 import org.n3r.idworker.WorkerIdStrategy;
 import org.n3r.idworker.utils.HttpReq;

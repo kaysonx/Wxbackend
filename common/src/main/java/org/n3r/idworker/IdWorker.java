@@ -1,4 +1,4 @@
-package idworker;
+package org.n3r.idworker;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

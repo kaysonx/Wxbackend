@@ -1,4 +1,4 @@
-package idworker;
+package org.n3r.idworker;
 
 public interface WorkerIdStrategy {
     void initialize();

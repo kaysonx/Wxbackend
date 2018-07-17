@@ -1,4 +1,4 @@
-package idworker.utils;
+package org.n3r.idworker.utils;
 
 import java.io.*;
 import java.sql.Timestamp;

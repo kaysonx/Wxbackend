@@ -1,4 +1,4 @@
-package idworker;
+package org.n3r.idworker;
 
 import org.n3r.idworker.strategy.DefaultWorkerIdStrategy;
 import org.n3r.idworker.utils.Utils;
