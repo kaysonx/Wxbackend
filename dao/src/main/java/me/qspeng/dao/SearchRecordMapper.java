@@ -1,16 +1,7 @@
 package me.qspeng.dao;
 
-import java.util.List;
 import me.qspeng.model.SearchRecord;
+import me.qspeng.utils.MyMapper;
 
-public interface SearchRecordMapper {
-    int deleteByPrimaryKey(String id);
-
-    int insert(SearchRecord record);
-
-    SearchRecord selectByPrimaryKey(String id);
-
-    List<SearchRecord> selectAll();
-
-    int updateByPrimaryKey(SearchRecord record);
+public interface SearchRecordMapper extends MyMapper<SearchRecord> {
 }

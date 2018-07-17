@@ -17,7 +17,11 @@
         <property name="endingDelimiter" value="`"/>
 
         <!-- 生成的pojo，将implements Serializable -->
-        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+        <!--<plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>-->
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="me.qspeng.utils.MyMapper"/>
+        </plugin>
 
         <!-- 注释 -->
         <commentGenerator>

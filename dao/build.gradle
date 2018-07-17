@@ -1,25 +1,55 @@
 buildscript {
     dependencies {
-        classpath("gradle.plugin.com.arenagod.gradle:mybatis-generator-plugin:1.4")
+//        classpath("gradle.plugin.com.arenagod.gradle:mybatis-generator-plugin:1.4")
+        classpath "gradle.plugin.com.cuisongliu.plugin:mybatis-generator:0.9.6"
     }
 }
 
-apply plugin: "com.arenagod.gradle.MybatisGenerator"
+//apply plugin: "com.arenagod.gradle.MybatisGenerator"
+apply plugin: "com.cuisongliu.plugin.mybatis-generator"
 
-configurations {
-    mybatisGenerator
-}
+//configurations {
+//    mybatisGenerator
+//}
+//
+//mybatisGenerator {
+//    verbose = true
+//    configFile = 'src/main/resources/generatorConfig.xml'
+//}
 
-mybatisGenerator {
-    verbose = true
-    configFile = 'src/main/resources/generatorConfig.xml'
+mbg {
+    overwrite = true
+    consoleable = true
+    generatorFile  = "src/main/resources/generatorConfig.xml"
+    jdbc{
+        driver = "com.mysql.jdbc.Driver"
+        url    = "jdbc:mysql://localhost:3306/wx-video?useSSL=false"
+        username = "root"
+        password = "h1juice"
+    }
+    xml{
+        javaProject = "src/main/java"
+        resourcesProject = "src/main/resources"
+        resourcesProject = "src/main/java"
+        mapperPlugin = tk.mybatis.mapper.generator.MapperPlugin.class
+        mapperMapper = "me.qspeng.utils.MyMapper"
+        mapperPackage= "me.qspeng.dao"
+        modelPackage = "me.qspeng.model"
+        xmlPackage =   "mapper"
+        tableName ="bgm"
+        objectName ="BackgroundMusic"
+        mapperSuffix ="Mapper"
+    }
 }
 
 
 dependencies {
     compile project(':model')
+
     compile('com.alibaba:druid-spring-boot-starter:1.1.10')
     compile('mysql:mysql-connector-java:8.0.11')
+
     compile("org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.2")
-    compile('org.mybatis.generator:mybatis-generator:1.3.7')
+
+//    compile('tk.mybatis:mapper-spring-boot-starter:2.0.3')
 }

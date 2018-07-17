@@ -1,16 +1,7 @@
 package me.qspeng.dao;
 
-import java.util.List;
 import me.qspeng.model.LikedVideo;
+import me.qspeng.utils.MyMapper;
 
-public interface LikedVideoMapper {
-    int deleteByPrimaryKey(String id);
-
-    int insert(LikedVideo record);
-
-    LikedVideo selectByPrimaryKey(String id);
-
-    List<LikedVideo> selectAll();
-
-    int updateByPrimaryKey(LikedVideo record);
+public interface LikedVideoMapper extends MyMapper<LikedVideo> {
 }

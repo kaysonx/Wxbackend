@@ -1,16 +1,7 @@
 package me.qspeng.dao;
 
-import java.util.List;
 import me.qspeng.model.BackgroundMusic;
+import me.qspeng.utils.MyMapper;
 
-public interface BackgroundMusicMapper {
-    int deleteByPrimaryKey(String id);
-
-    int insert(BackgroundMusic record);
-
-    BackgroundMusic selectByPrimaryKey(String id);
-
-    List<BackgroundMusic> selectAll();
-
-    int updateByPrimaryKey(BackgroundMusic record);
+public interface BackgroundMusicMapper extends MyMapper<BackgroundMusic> {
 }

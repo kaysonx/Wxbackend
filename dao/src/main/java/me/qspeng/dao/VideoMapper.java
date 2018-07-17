@@ -1,16 +1,7 @@
 package me.qspeng.dao;
 
-import java.util.List;
 import me.qspeng.model.Video;
+import me.qspeng.utils.MyMapper;
 
-public interface VideoMapper {
-    int deleteByPrimaryKey(String id);
-
-    int insert(Video record);
-
-    Video selectByPrimaryKey(String id);
-
-    List<Video> selectAll();
-
-    int updateByPrimaryKey(Video record);
+public interface VideoMapper extends MyMapper<Video> {
 }

@@ -1,16 +1,7 @@
 package me.qspeng.dao;
 
-import java.util.List;
 import me.qspeng.model.User;
+import me.qspeng.utils.MyMapper;
 
-public interface UserMapper {
-    int deleteByPrimaryKey(String id);
-
-    int insert(User record);
-
-    User selectByPrimaryKey(String id);
-
-    List<User> selectAll();
-
-    int updateByPrimaryKey(User record);
+public interface UserMapper extends MyMapper<User> {
 }

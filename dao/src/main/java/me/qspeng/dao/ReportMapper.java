@@ -1,16 +1,7 @@
 package me.qspeng.dao;
 
-import java.util.List;
 import me.qspeng.model.Report;
+import me.qspeng.utils.MyMapper;
 
-public interface ReportMapper {
-    int deleteByPrimaryKey(String id);
-
-    int insert(Report record);
-
-    Report selectByPrimaryKey(String id);
-
-    List<Report> selectAll();
-
-    int updateByPrimaryKey(Report record);
+public interface ReportMapper extends MyMapper<Report> {
 }
