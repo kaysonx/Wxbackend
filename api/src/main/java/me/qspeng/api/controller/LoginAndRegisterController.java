@@ -2,11 +2,14 @@ package me.qspeng.api.controller;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import lombok.var;
+import me.qspeng.api.vo.UserVO;
 import me.qspeng.model.User;
 import me.qspeng.service.UserService;
 import me.qspeng.utils.JSONResult;
 import me.qspeng.utils.MD5Utils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +27,7 @@ public class LoginAndRegisterController {
     @ApiOperation(value = "register", notes = "register with username and password")
     public JSONResult register(@RequestBody User user) throws Exception {
 
-        if (StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getPassword())) {
+        if (checkUserBasicInfo(user)) {
             return JSONResult.errorMsg("Username or password can't be empty");
         }
 
@@ -32,11 +35,37 @@ public class LoginAndRegisterController {
 
         if (!isUsernameExist) {
             user.setPassword(MD5Utils.getMD5Str(user.getPassword()));
+            user.setDefault();
             userService.saveUser(user);
         } else {
             return JSONResult.errorMsg("Username Already Exists, Pls Try Again.");
         }
 
-        return JSONResult.ok();
+        var userVO = new UserVO();
+        BeanUtils.copyProperties(user, userVO);
+        return JSONResult.ok(userVO);
+    }
+
+    @PostMapping("/login")
+    @ApiOperation(value = "login", notes = "login with username and password")
+    public JSONResult login(@RequestBody User user) throws Exception {
+
+        if (checkUserBasicInfo(user)) {
+            return JSONResult.errorMsg("Username or password can't be empty");
+        }
+
+        var queryUser = userService.loginQuery(user);
+
+        if (queryUser == null) {
+            return JSONResult.errorMsg("Username or password not match.");
+        }
+
+        var userVO = new UserVO();
+        BeanUtils.copyProperties(queryUser, userVO);
+        return JSONResult.ok(userVO);
+    }
+
+    private boolean checkUserBasicInfo(User user) {
+        return StringUtils.isBlank(user.getUsername()) || StringUtils.isBlank(user.getPassword());
     }
 }

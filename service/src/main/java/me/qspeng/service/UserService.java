@@ -6,4 +6,6 @@ public interface UserService {
     boolean isUsernameExist(String userName);
 
     void saveUser(User user);
+
+    User loginQuery(User user) throws Exception;
 }

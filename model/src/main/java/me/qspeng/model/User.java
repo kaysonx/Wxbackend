@@ -2,6 +2,7 @@ package me.qspeng.model;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -28,6 +29,7 @@ public class User {
     @ApiModelProperty(hidden = true)
     private String faceImage;
 
+    @ApiModelProperty(hidden = true)
     private String nickname;
 
     @Column(name = "fans_counts")
@@ -52,5 +54,13 @@ public class User {
         this.nickname = username;
         this.receiveLikeCounts = 0;
 
+    }
+
+    public void setDefault() {
+        this.faceImage = "";
+        this.fansCounts = 0;
+        this.followCounts = 0;
+        this.nickname = this.username;
+        this.receiveLikeCounts = 0;
     }
 }
