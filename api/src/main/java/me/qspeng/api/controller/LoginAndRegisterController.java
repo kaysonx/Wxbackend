@@ -3,6 +3,7 @@ package me.qspeng.api.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.var;
+import me.qspeng.api.tool.JwtToken;
 import me.qspeng.api.vo.UserVO;
 import me.qspeng.model.User;
 import me.qspeng.service.UserService;
@@ -43,6 +44,7 @@ public class LoginAndRegisterController {
 
         var userVO = new UserVO();
         BeanUtils.copyProperties(user, userVO);
+        userVO.setUserToken(JwtToken.createToken(userVO.getId()));
         return JSONResult.ok(userVO);
     }
 
@@ -62,6 +64,7 @@ public class LoginAndRegisterController {
 
         var userVO = new UserVO();
         BeanUtils.copyProperties(queryUser, userVO);
+        userVO.setUserToken(JwtToken.createToken(userVO.getId()));
         return JSONResult.ok(userVO);
     }
 
