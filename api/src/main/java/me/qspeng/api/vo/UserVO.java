@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 public class UserVO {
     private String id;
 
-    private String userToken;
+    private String userToken = "";
 
     private String username;
 

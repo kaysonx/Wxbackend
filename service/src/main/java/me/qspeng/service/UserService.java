@@ -8,4 +8,8 @@ public interface UserService {
     void saveUser(User user);
 
     User loginQuery(User user) throws Exception;
+
+    User getUserById(String userId);
+
+    void updateUserInfo(User user);
 }

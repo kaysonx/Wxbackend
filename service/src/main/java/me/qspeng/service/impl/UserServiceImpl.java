@@ -43,4 +43,17 @@ public class UserServiceImpl implements UserService {
         criteria.andEqualTo("password", MD5Utils.getMD5Str(user.getPassword()));
         return userMapper.selectOneByExample(userExample);
     }
+
+    @Override
+    public User getUserById(String userId) {
+        return userMapper.selectByPrimaryKey(userId);
+    }
+
+    @Override
+    public void updateUserInfo(User user) {
+        var userExample = new Example(User.class);
+        var criteria =  userExample.createCriteria();
+        criteria.andEqualTo("id", user.getId());
+        userMapper.updateByExampleSelective(user, userExample);
+    }
 }
