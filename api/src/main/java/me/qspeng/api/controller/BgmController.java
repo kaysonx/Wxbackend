@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@Api(value = "Controller for bgm", tags = {"Background music controller"})
+@Api(value = "Controller for bgm", tags = {"bgm"})
 @RequestMapping("/bgm")
 public class BgmController {
 

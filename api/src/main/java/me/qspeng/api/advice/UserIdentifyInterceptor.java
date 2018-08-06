@@ -20,6 +20,7 @@ public class UserIdentifyInterceptor implements HandlerInterceptor {
             returnErrorMsg(response);
             return false;
         }
+        request.setAttribute("userId", JwtToken.getUserID(userToken));
         return true;
     }
 

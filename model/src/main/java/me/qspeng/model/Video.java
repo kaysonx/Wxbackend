@@ -1,11 +1,15 @@
 package me.qspeng.model;
 
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
 @Table(name = "videos")
+@NoArgsConstructor
 public class Video {
     @Id
     private String id;

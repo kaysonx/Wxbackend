@@ -5,6 +5,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import lombok.var;
+import me.qspeng.api.constant.Constant;
 import me.qspeng.api.tool.JwtToken;
 import me.qspeng.api.vo.UserVO;
 import me.qspeng.model.User;
@@ -64,9 +65,8 @@ public class UserController {
             }
             String fileName = files[0].getOriginalFilename();
             if (!Strings.isNullOrEmpty(fileName)) {
-                final String fileSpace = "/Users/qspeng/wx-videos";
                 uploadDBPath = "/" + userId + "/face/" + fileName;
-                String finalFaceImgPath = fileSpace + uploadDBPath;
+                String finalFaceImgPath = Constant.FILE_SPACE + uploadDBPath;
 
                 File outFile = new File(finalFaceImgPath);
                 if(outFile.getParentFile() == null || !outFile.getParentFile().isDirectory()) {
